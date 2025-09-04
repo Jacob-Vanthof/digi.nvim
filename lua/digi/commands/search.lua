@@ -48,6 +48,13 @@ local function display_results(data, card_number)
     table.insert(lines, "Play Cost: " .. (card.play_cost or "N/A"))
     table.insert(lines, "Evolution Cost: " .. (card.evolution_cost or "N/A"))
     table.insert(lines, "")
+
+    local index = card.main_effect:find('\n', 1, true)
+    
+    if(index != nill)
+    {
+        string.gsub(card.main_effect, '\n', '\\n')
+    }
     table.insert(lines, "Effect: " .. (card.main_effect or "N/A"))
     table.insert(lines, "Rarity: " .. (card.rarity or "N/A"))
     
