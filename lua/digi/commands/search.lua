@@ -51,10 +51,10 @@ local function display_results(data, card_number)
 
     local index = card.main_effect:find('\n', 1, true)
     
-    if(index != nil)
-    {
+    if index != nil then
         string.gsub(card.main_effect, '\n', '\\n')
-    }
+    end
+
     table.insert(lines, "Effect: " .. (card.main_effect or "N/A"))
     table.insert(lines, "Rarity: " .. (card.rarity or "N/A"))
     
