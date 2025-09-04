@@ -27,9 +27,10 @@ end
 
 local function strip_newline(table)
     -- Go through each entry
-    for k, v in pairs(t) do
+    for k, v in pairs(table) do
         if type(v) == "table" then
             -- If the value is another table, recurse to the next table
+            strip_newline(v)
         elseif type(v) == "string" then
             -- If the value is a string gsub the newline
             t[k] = string.gsub(v, "\n", "\\n")
