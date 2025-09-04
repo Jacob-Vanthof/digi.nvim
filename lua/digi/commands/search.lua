@@ -25,6 +25,18 @@ local function parse_response(response)
     return data, nil
 end
 
+local function strip_newline(table)
+    -- Go through each entry
+    for k, v in pairs(t) do
+        if type(v) == "table" then
+            -- If the value is another table, recurse to the next table
+        elseif type(v) == "string" then
+            -- If the value is a string gsub the newline
+            t[k] = string.gsub(v, "\n", "\\n")
+        end
+    end
+end
+
 local function display_results(data, card_number)
     if #data == 0 then
         vim.notify("No card found for: " .. card_number, vim.log.levels.INFO)
@@ -49,11 +61,12 @@ local function display_results(data, card_number)
     table.insert(lines, "Evolution Cost: " .. (card.evolution_cost or "N/A"))
     table.insert(lines, "")
 
-    string.gsub(card.main_effect, '\n', '\\n')
 
     table.insert(lines, "Effect: " .. (card.main_effect or "N/A"))
     table.insert(lines, "Rarity: " .. (card.rarity or "N/A"))
-    
+  
+    strip_newline(lines)
+
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     
     -- Set buffer options
