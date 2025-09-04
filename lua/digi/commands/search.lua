@@ -37,7 +37,7 @@ local function display_results(data, card_number)
     
     -- Add card information to the buffer
     local card = data[1]
-    table.insert(lines, "Card Number: " .. (card.card_number or "N/A"))
+    table.insert(lines, "Card Number: " .. (card.id or "N/A"))
     table.insert(lines, "Name: " .. (card.name or "N/A"))
     table.insert(lines, "Color: " .. (card.color or "N/A"))
     table.insert(lines, "Type: " .. (card.type or "N/A"))
@@ -48,7 +48,8 @@ local function display_results(data, card_number)
     table.insert(lines, "Play Cost: " .. (card.play_cost or "N/A"))
     table.insert(lines, "Evolution Cost: " .. (card.evolution_cost or "N/A"))
     table.insert(lines, "")
-    table.insert(lines, "Effect: " .. (card.effect or "N/A"))
+    table.insert(lines, "Effect: " .. (card.main_effect or "N/A"))
+    table.insert(lines, "Rarity: " .. (card.rarity or "N/A"))
     
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     
@@ -58,7 +59,7 @@ local function display_results(data, card_number)
     vim.api.nvim_buf_set_name(buf, "Digimon Card: " .. card_number)
     
     -- Open the buffer in a split window
-    vim.cmd("split")
+    vim.cmd("vsplit")
     vim.api.nvim_win_set_buf(0, buf)
 end
 
