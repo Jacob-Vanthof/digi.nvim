@@ -1,6 +1,6 @@
 local digimon = require('digi.nvim')
 
-local M
+local M = {}
 
 function M.setup(opts)
     -- Add some options here later
