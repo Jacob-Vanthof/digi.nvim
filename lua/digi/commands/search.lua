@@ -33,7 +33,7 @@ local function strip_newline(table)
             strip_newline(v)
         elseif type(v) == "string" then
             -- If the value is a string gsub the newline
-            t[k] = string.gsub(v, "\n", "\\n")
+            table[k] = string.gsub(v, "\n", "\\n")
         end
     end
 end
