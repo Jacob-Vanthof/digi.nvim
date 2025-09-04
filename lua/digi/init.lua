@@ -2,7 +2,7 @@ local search = require("digi.commands.search")
 
 local M = {}
 
-function M.setup(opts)
+function M.setup()
     vim.api.nvim_create_user_command('DigiSearch', function(opts)
         search.search_by_card_number(opts.args)
     end, {
