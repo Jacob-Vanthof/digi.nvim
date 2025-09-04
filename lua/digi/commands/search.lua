@@ -49,11 +49,7 @@ local function display_results(data, card_number)
     table.insert(lines, "Evolution Cost: " .. (card.evolution_cost or "N/A"))
     table.insert(lines, "")
 
-    local index = card.main_effect:find('\n', 1, true)
-    
-    if not index then
-        string.gsub(card.main_effect, '\n', '\\n')
-    end
+    string.gsub(card.main_effect, '\n', '\\n')
 
     table.insert(lines, "Effect: " .. (card.main_effect or "N/A"))
     table.insert(lines, "Rarity: " .. (card.rarity or "N/A"))
@@ -61,8 +57,6 @@ local function display_results(data, card_number)
     vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
     
     -- Set buffer options
-    vim.api.nvim_buf_set_option(buf, 'filetype', 'markdown')
-    vim.api.nvim_buf_set_option(buf, 'modifiable', false)
     vim.api.nvim_buf_set_name(buf, "Digimon Card: " .. card_number)
     
     -- Open the buffer in a split window
