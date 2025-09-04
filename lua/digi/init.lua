@@ -7,8 +7,10 @@ function M.setup(opts)
         search.search_by_card_number(opts.args)
     end, {
             nargs = 1,
-            desc = "Search Digimon card by card number (e.g. BT4-016)"})
+            desc = "Search Digimon card by card number (e.g. BT4-016)"
+        })
 
     -- Add some options here later
 end
 
+return M
