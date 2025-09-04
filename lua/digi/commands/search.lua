@@ -51,7 +51,7 @@ local function display_results(data, card_number)
 
     local index = card.main_effect:find('\n', 1, true)
     
-    if(index != nill)
+    if(index != nil)
     {
         string.gsub(card.main_effect, '\n', '\\n')
     }
